@@ -70,7 +70,7 @@ GDOCS_SPREADSHEET_NAME = 'Your google docs spreadsheet name'
 FREQUENCY_SECONDS  = 30
 
 # Input GPIO for receiving pulses from Garo GM3D
-GPIO = 17
+GPIO_PIN = 17
 
 def login_open_sheet(oauth_key_file, spreadsheet):
     """Connect to Google Docs spreadsheet and return the first worksheet."""
@@ -90,13 +90,13 @@ def login_open_sheet(oauth_key_file, spreadsheet):
 wattHours = 0
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(GPIO, GPIO.OUT)
+GPIO.setup(GPIO_PIN, GPIO.IN)
 
 def gpio_callback(channel):
     wattHours += 10 # Each GPIO event (from low to high) represent 10 watt hours.
     print "GPIO triggered! The energy meter has currently drawn  ",wattHours," Wh since the raspberry pi was started."
 
-GPIO.add_event_detect(GPIO, GPIO.RISING, callback=gpio_callback, bouncetime=300)
+GPIO.add_event_detect(GPIO_PIN, GPIO.RISING, callback=gpio_callback, bouncetime=300)
 
 print 'Logging energy meter to {0} every {1} seconds.'.format(GDOCS_SPREADSHEET_NAME, FREQUENCY_SECONDS)
 print 'Press Ctrl-C to quit.'

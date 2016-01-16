@@ -93,6 +93,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIO_PIN, GPIO.IN)
 
 def gpio_callback(channel):
+    global wattHours
     wattHours += 10 # Each GPIO event (from low to high) represent 10 watt hours.
     print "GPIO triggered! The energy meter has currently drawn  ",wattHours," Wh since the raspberry pi was started."
 

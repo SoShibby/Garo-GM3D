@@ -22,6 +22,9 @@ gdocs_oauth_json: 'Energy Meter-e472686723c8.json'
 # Google Docs spreadsheet name.
 gdocs_spreadsheet_name: 'Heat pump energy meter'
 
+# Google Docs spreadsheet worksheet name (the name that is on the tab at the bottom of the worksheet).
+gdocs_spreadsheet_worksheet: 'Sheet1'
+
 # How long to wait (in seconds) between measurements.
 frequency_seconds: 30
 

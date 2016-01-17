@@ -49,7 +49,7 @@ print 'Logging energy meter to spreadsheet  "{0}" every {1} seconds.'.format(cfg
 print 'Press Ctrl-C to quit.'
 
 # Initialize the spreadsheet
-spreadsheet = Spreadsheet(cfg['gdocs_oauth_json'], cfg['gdocs_spreadsheet_name'])
+spreadsheet = Spreadsheet(cfg['gdocs_oauth_json'], cfg['gdocs_spreadsheet_name'], cfg['gdocs_spreadsheet_worksheet'])
 
 # Get the current energy meter standing from the spreadsheet on cell B1
 current_watt_hours = spreadsheet.get_cell_value('B1')

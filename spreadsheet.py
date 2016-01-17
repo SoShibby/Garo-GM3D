@@ -7,13 +7,15 @@ worksheet = None
 class Spreadsheet:
     oauth_key_file = ''
     spreadsheet_name = ''
+    worksheet_name = ''
     worksheet = None
 
-    def __init__(self, oauth_key_file, spreadsheet_name):
+    def __init__(self, oauth_key_file, spreadsheet_name, worksheet_name):
         self.oauth_key_file = oauth_key_file
         self.spreadsheet_name =  spreadsheet_name
+        self.worksheet_name = worksheet_name
 
-    def login_open_sheet(self, oauth_key_file, spreadsheet):
+    def login_open_sheet(self, oauth_key_file, spreadsheet, worksheet_name):
         print 'Logging into Google Docs'
 
         try:
@@ -22,7 +24,7 @@ class Spreadsheet:
                                                         json_key['private_key'],
                                                         ['https://spreadsheets.google.com/feeds'])
             gc = gspread.authorize(credentials)
-            self.worksheet = gc.open(spreadsheet).sheet1
+            self.worksheet = gc.open(spreadsheet).worksheet(worksheet_name)
             return worksheet
         except Exception as ex:
             print 'Unable to login and get spreadsheet.  Check OAuth credentials, spreadsheet name, and make sure spreadsheet is shared to the client_email address in the OAuth .json file!'
@@ -31,7 +33,7 @@ class Spreadsheet:
     def check_login(self):
         # Login if necessary.
         if self.worksheet is None:
-            self.login_open_sheet(self.oauth_key_file, self.spreadsheet_name)
+            self.login_open_sheet(self.oauth_key_file, self.spreadsheet_name, self.worksheet_name)
 
     def append_row(self, row):
         self.check_login()

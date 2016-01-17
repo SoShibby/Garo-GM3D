@@ -23,9 +23,11 @@ Google spreadsheet
 4. Select "New service account" in the drop-down menu and enter a name for you service account
 5. Select "JSON" as key type
 6. You will automatically download a JSON file with this data.
-7. Save this file on your Raspberry Pi and remember where, as you will need it for the next step
+7. Save this file on your Raspberry Pi and remember where, as you will need it later
 8. Next create a new spreadsheet on [Google drive](https://drive.google.com/drive/my-drive).
-9. Then give your service account access to this spreadsheet (you do this by click on share when you are viewing your newly created spreadsheet). You can find the email address to your service account by opening the file was downloaded in step 6.
+9. In cell A1 enter the following text: "Current Watt Hours"
+10. In cell B1 enter the following text: "0"
+11. Then give your service account access to this spreadsheet (you do this by click on share when you are viewing your newly created spreadsheet). You can find the email address to your service account by opening the file that was downloaded in step 6.
 
 Installation
 -----------------
@@ -34,22 +36,27 @@ First we start off by installing Pyton
 $ sudo apt-get update
 $ sudo apt-get install build-essential python-dev python-openssl
 ```
-Then we install oauth2client for Python
+Then we install oauth2client and yaml for Python
 ```sh
 $ sudo apt-get install python-pip
 $ sudo pip install gspread oauth2client
 $ sudo pip install PyOpenSSL
+$ sudo pip install pyyaml
 ```
 Next lets download the code for synchronizing the data we receive from the Garo GM3D with the Google spreadsheet
 ```sh
 $ git clone https://github.com/SoShibby/Garo-GM3D
 $ cd Garo-GM3D
 ```
-Open the Python file energy_meter.py and edit the line starting with GDOCS_OAUTH_JSON and enter the path to your Google oauth file that you download in the previous step. Also change the row that starts with GDOCS_SPREADSHEET_NAME and enter the name of the spreadsheet in your Google drive that you want to be updated with the current energy usage. When you are done run the following to run the Python code.
+When you are finished open the configuration file config.yml and edit the following lines:
+* GDOCS_OAUTH_JSON: Enter the path to your oauth file that you downloaded in step 7 in "Google spreadsheet"
+* GDOCS_SPREADSHEET_NAME: The name of the spreadsheet that you created in step 8 in "Google spreadsheet"
+
+Now you are ready to run the program, do this by executing the following command.
 ```sh
 $ python energy_meter.py
 ```
-If you now open your spreadsheet on [Google Drive]("https://drive.google.com/drive/my-drive") you should see that it gets updated with the current energy usage every 30 seconds (you can change the update frequency by changing the line FREQUENCY_SECONDS in the energy_meter.py file).
+If you now open your spreadsheet on [Google Drive]("https://drive.google.com/drive/my-drive") you should see that it gets updated with the current energy usage every 30 seconds (you can change the update frequency by changing the line "frequency_seconds" in the config.yml file).
 
 External Links
 ------------

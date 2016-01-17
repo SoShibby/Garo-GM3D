@@ -16,7 +16,7 @@ class Garo:
 
     def gpio_callback(self, channel):
         self.watt_hours += 10 # Each GPIO event (from low to high) represent 10 watt hours.
-        print "GPIO triggered! The energy meter has currently drawn  ",self.watt_hours," Wh since the raspberry pi was started."
+        print "GPIO triggered! The energy meter has currently drawn  ",self.watt_hours," Wh."
 
     def get_watt_hours(self):
         return self.watt_hours

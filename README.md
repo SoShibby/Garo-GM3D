@@ -26,7 +26,7 @@ Google spreadsheet
 7. Save this file on your Raspberry Pi and remember where, as you will need it later
 8. Next create a new spreadsheet on [Google drive](https://drive.google.com/drive/my-drive).
 9. In cell A1 enter the following text: "Current Watt Hours"
-10. In cell B1 enter the following text: "0"
+10. In cell B1 enter the current watt usage that is displayed on the Garo GM3D display (multiple this value by 1000 to convert the value from kW/h to W/h)
 11. Then give your service account access to this spreadsheet (you do this by click on share when you are viewing your newly created spreadsheet). You can find the email address to your service account by opening the file that was downloaded in step 6.
 
 Installation

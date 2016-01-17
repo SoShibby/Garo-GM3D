@@ -49,8 +49,8 @@ $ git clone https://github.com/SoShibby/Garo-GM3D
 $ cd Garo-GM3D
 ```
 When you are finished open the configuration file config.yml and edit the following lines:
-* GDOCS_OAUTH_JSON: Enter the path to your oauth file that you downloaded in step 7 in "Google spreadsheet"
-* GDOCS_SPREADSHEET_NAME: The name of the spreadsheet that you created in step 8 in "Google spreadsheet"
+* gdocs_oauth_json: Enter the path to your oauth file that you downloaded in step 7 in "Google spreadsheet"
+* gdocs_spreadsheet_name: The name of the spreadsheet that you created in step 8 in "Google spreadsheet"
 
 Now you are ready to run the program, do this by executing the following command.
 ```sh
